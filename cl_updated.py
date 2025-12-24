@@ -11,9 +11,9 @@ import os
 # Load environment variables
 load_dotenv()
 
-st.set_page_config(page_title="Invoice Reconciliation Tool", layout="wide")
+st.set_page_config(page_title="Crompton Invoice Reconciliation Tool", layout="wide")
 
-st.title("📊 Invoice Reconciliation Tool")
+st.title("Crompton Invoice Reconciliation Tool")
 st.markdown("Compare PDF invoices with Excel PO data for accurate reconciliation")
 
 # Load Azure credentials from environment variables
@@ -23,14 +23,6 @@ AZURE_KEY = os.getenv("AZURE_KEY")
 # Sidebar for settings only
 with st.sidebar:
     st.header("⚙️ Configuration")
-    
-    # Show connection status (without revealing credentials)
-    if AZURE_ENDPOINT and AZURE_KEY:
-        st.success("✅ Azure credentials loaded")
-    else:
-        st.error("❌ Azure credentials not found in .env file")
-        st.info("Please ensure .env file contains:\n- AZURE_ENDPOINT\n- AZURE_KEY")
-    
     st.subheader("Reconciliation Settings")
     tolerance = st.slider(
         "Amount Tolerance (₹)", 
@@ -610,4 +602,5 @@ with st.expander("ℹ️ How to use this tool"):
 
 # Footer
 st.markdown("---")
+
 st.caption("🔒 Your Azure credentials are securely loaded from .env file and never displayed to users")
